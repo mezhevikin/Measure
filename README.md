@@ -13,15 +13,14 @@ Measure.finish("create-user")
 // ⏲ Measure [create-user]: 0.00521 sec.
 ```
 
-### Async
+### Measure async request
 
 ```swift
 Measure.start("request")
 let url = URL(string: "https://httpbin.org/get")!
 URLSession.shared.dataTask(with: url) { _, _, _ in
-    if Measure.finish("request") > 10 {
-        print("Too long request")
-    }
+    let time = Measure.finish("request")
+    Analytics.send(event: "request", ["time" => time])
 }.resume()
 ```
         
