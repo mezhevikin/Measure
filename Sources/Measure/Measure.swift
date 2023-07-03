@@ -2,7 +2,7 @@
 import Foundation
 
 public struct Measure {
-    let key: String
+    public let key: String
     private let start = CFAbsoluteTimeGetCurrent()
     
     @discardableResult
