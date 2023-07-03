@@ -3,7 +3,12 @@ import Foundation
 
 public struct Measure {
     public let key: String
-    private let start = CFAbsoluteTimeGetCurrent()
+    private let start: CFAbsoluteTime
+    
+    public init(key: String) {
+        self.key = key
+        self.start = CFAbsoluteTimeGetCurrent()
+    }
     
     @discardableResult
     public func finish() -> Double {
